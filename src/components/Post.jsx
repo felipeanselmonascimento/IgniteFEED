@@ -2,14 +2,33 @@ import { Avatar } from './Avatar'
 import { Comment } from './Comment'
 import styles from './Post.module.css'
 import { format, formatDistanceToNow } from 'date-fns'
+import { useState } from 'react'
 
 export function Post({ author, content, publishedAt }) {
+
+    const [comments, setComments] = useState(['Post muito bacana em ?'])
+
+    const [newCommentText, SetNewCommentText] = useState('')
 
     const publishedDateFormmatted = format(publishedAt, "d 'of' LLLL HH:mm'h'")
 
     const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
         addSuffix: true
     })
+
+    const handleCreateNewComment = () => {
+        event.preventDefault()
+
+        setComments([...comments, newCommentText])
+        SetNewCommentText('')
+    }
+
+    const handleNewCommentChange = () => {
+        //event.target pega o textarea pq foi add no textarea e nao no formulario
+        const newComment = event.target.value
+
+        SetNewCommentText(newComment)
+    }
 
     return (
         <article className={styles.post}>
@@ -26,25 +45,29 @@ export function Post({ author, content, publishedAt }) {
             <div className={styles.content}>
                 {content.map(line => {
                     if (line.type === 'paragraph') {
-                        return <p>{line.content}</p>
+                        return <p key={line.content}>{line.content}</p>
                     }
                     if (line.type === 'link') {
-                        return <p><a href="#">{line.content}</a></p>
+                        return <p key={line.content}><a href="#">{line.content}</a></p>
                     }
                 })}
                 <p><a href="#">#novoprojeto#rockseat</a></p>
             </div>
-            <form className={styles.commentForm}>
+            <form onSubmit={handleCreateNewComment} className={styles.commentForm}>
                 <strong>Leave your feedback!</strong>
-                <textarea placeholder="leave a comment..." />
+                <textarea 
+                    placeholder="leave a comment..."
+                    onChange={handleNewCommentChange}
+                    value={newCommentText}
+                />
                 <footer>
                     <button type="submit">Post</button>
                 </footer>
             </form>
             <div className={styles.commentList}>
-                <Comment />
-                <Comment />
-                <Comment />
+                {comments.map(comment => {
+                    return <Comment  key={comment} content={comment}/>
+                })}
             </div>
         </article>
     )
