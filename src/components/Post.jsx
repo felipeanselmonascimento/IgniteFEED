@@ -31,7 +31,12 @@ export function Post({ author, content, publishedAt }) {
     }
 
     const deleteComment = (commentIWantRemove) => {
+        const commentsWithoutDeletedOne = comments.filter(comment => {
+            return comment !== commentIWantRemove       
+        })
+        //no react a gente sempre vai trabalhar com imutabilidade a gente vai sempre criair um valor novo e depois salvar no estado
 
+        setComments(commentsWithoutDeletedOne)
     }
 
     return (
@@ -70,7 +75,7 @@ export function Post({ author, content, publishedAt }) {
             </form>
             <div className={styles.commentList}>
                 {comments.map(comment => {
-                    return <Comment deleteComment={deleteComment} key={comment} content={comment}/>
+                    return <Comment OnDeleteComment={deleteComment} key={comment} content={comment}/>
                 })}
             </div>
         </article>
