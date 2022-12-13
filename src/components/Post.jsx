@@ -70,7 +70,7 @@ export function Post({ author, content, publishedAt }) {
                     value={newCommentText}
                 />
                 <footer>
-                    <button type="submit">Post</button>
+                    <button type="submit" disabled={newCommentText.length === 0}>Post</button>
                 </footer>
             </form>
             <div className={styles.commentList}>

@@ -110,9 +110,14 @@
 
     transition: background-color 0.1s;
 }
-
-.commentForm button[type=submit]:hover {
+/*hover so funciona se nao tiver disabled*/
+.commentForm button[type=submit]:not(:disabled):hover {
     background: var(--green-300);
+}
+
+.commentForm button[type=submit]:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
 }
 
 .commentList {
