@@ -8,7 +8,7 @@ export function Comment({ content, OnDeleteComment }) {
     const [likeCount, setLikeCount] = useState(0)
 
     const handleLikeCount = () => {
-        setLikeCount(likeCount + 1)
+        setLikeCount(state => state + 1)
     }
 
     const handleDeleteComment = () => {
@@ -25,7 +25,7 @@ export function Comment({ content, OnDeleteComment }) {
                             <strong>Carlao</strong>
                             <time title="10 of december 20:55h" dateTime="2022-12-10 20:55:00">Cerca de 1 hora atras</time>
                         </div>
-                        <button onClick={handleDeleteComment} title="Delete Comment">
+                        <button onMouseDown={handleDeleteComment} title="Delete Comment">
                             <Trash size={24}/>
                         </button>    
                     </header>
