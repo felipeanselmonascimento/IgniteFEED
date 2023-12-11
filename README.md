@@ -3,7 +3,7 @@
 </h1>
 
 <h3 align="center">
-	Hello this is my  first timem using ReactJS, there are load of things in this Project that I've learnt so far things like Components, Properties, useState, Keys, CSS modules ...  if you would like to have look, follow the steps below, hope you enjoy it, thanks :)
+	Hello this is my  first time using ReactJS, there are load of things in this Project that I've learnt so far things like Components, Properties, useState, Keys, CSS modules ...  if you would like to have look, follow the steps below, hope you enjoy it, thanks :)
 </h3>
 
 <p align="center">
