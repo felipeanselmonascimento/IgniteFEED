@@ -10,7 +10,7 @@ const posts = [
     author: {
       avatarUrl: "https://github.com/diego3g.png",
       name: "Diego Fernandes",
-      role: "Web Developer"
+      role: "Web Developerrr"
     },
     content: [
       { type: "paragraph", content: "Fala galeraaaa" },
